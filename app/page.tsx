@@ -1,65 +1,128 @@
-import Image from "next/image";
+// Datei: src/app/page.tsx
+'use client'; 
 
-export default function Home() {
+import { useState } from 'react';
+
+export default function HomePage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  // NEU: States für Lade-Feedback und Fehlermeldungen
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault(); 
+    
+    // NEU: Setze den Ladezustand und lösche alte Nachrichten
+    setIsLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      // NEU: Sende die Daten an unser eigenes Backend (/api/authenticate)
+      const response = await fetch('/api/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Wenn die API einen Fehler zurückgibt (z.B. 401 Falsches Passwort)
+        throw new Error(data.error || 'Etwas ist schiefgelaufen.');
+      }
+      
+      // Erfolg!
+      setSuccess(data.message || 'Erfolgreich verbunden!');
+      setEmail(''); // Formularfelder leeren
+      setPassword(''); // Formularfelder leeren
+
+    } catch (err) {
+      // Fehler beim fetch oder von der API
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Ein unbekannter Fehler ist aufgetreten.');
+      }
+    } finally {
+      // NEU: Ladezustand beenden, egal ob Erfolg oder Fehler
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        
+        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          OtoImpact Counter
+        </h1>
+        
+        <p className="text-center text-gray-600 mb-6">
+          Verbinden Sie Ihr Otocloud-Konto, um Ihr persönliches Widget zu generieren.
+        </p>
+
+        {/* Das Formular bleibt fast gleich */}
+        <form onSubmit={handleSubmit}>
+          
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              Otocloud E-Mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
+              disabled={isLoading} // NEU: Deaktivieren während des Ladens
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+
+          <div className="mb-6">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              Otocloud Passwort
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
+              disabled={isLoading} // NEU: Deaktivieren während des Ladens
+            />
+          </div>
+
+          {/* NEU: Erfolgs- und Fehlermeldungen anzeigen */}
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-md text-sm">
+              {success}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+            disabled={isLoading} // NEU: Deaktivieren während des Ladens
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            {/* NEU: Text ändern, während geladen wird */}
+            {isLoading ? 'Verbinde...' : 'Sicher verbinden'}
+          </button>
+          
+        </form>
+      </div>
+    </main>
   );
 }
