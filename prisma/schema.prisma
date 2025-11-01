@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+
+  // Dies ist jetzt der Standard für die lokale Migration
+  url = env("DATABASE_URL") 
+
+  // Dies ist für Vercel-Deployments unerlässlich
+  directUrl = env("POSTGRES_URL_NON_POOLING") 
+}
+
+// Unser Datenmodell
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  
+  fedAuthCookie String
+  clinicId      String
+  
+  // --- NEUE CACHING-FELDER ---
+  cachedScanCount   Int?      // Optional: Die gespeicherte Scan-Zahl
+  scansLastCheckedAt DateTime? // Optional: Zeitstempel der letzten Prüfung
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

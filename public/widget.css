@@ -1,0 +1,199 @@
+/* Datei: public/widget.css */
+/* Design-System für den OtoImpact Counter (Version 2, mit Farbanpassung) */
+
+/* 1. Haupt-Container (Wrapper) */
+.oto-widget-wrapper {
+  /* Standard-Farbe (Weiß) als Variable */
+  --widget-accent-color: #ffffff; 
+  
+  min-height: 600px;
+  width: 100%;
+  max-width: 700px;
+  padding: 24px;
+  box-sizing: border-box;
+  
+  font-family: Arial, sans-serif;
+  color: var(--widget-accent-color); /* <-- Nutzt die Farb-Variable */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(180deg, #4a7c59 0%, #6a994e 50%, #4a7c59 100%);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Transparenz-Modus */
+/* Diese Klasse wird per JS hinzugefügt, wenn der User es wünscht */
+.oto-widget-wrapper.transparent {
+  background: transparent;
+  box-shadow: none;
+  /* Im Transparenz-Modus wechseln wir die Akzentfarbe auf Dunkelgrau */
+  --widget-accent-color: #333333; 
+}
+
+
+/* 2. Sektionen-Layout */
+.oto-section {
+  margin-bottom: 20px;
+}
+
+/* 3. Obere Sektion: Beschreibungstext */
+.oto-section-description p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* 4. Mittlere Sektion: Bild + Counter */
+.oto-section-main {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.oto-main-image img {
+  width: 200px;
+  height: auto;
+}
+
+.oto-main-counter {
+  text-align: left;
+  flex-grow: 1; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.oto-main-counter .counter-number {
+  font-size: 84px;
+  font-weight: bold;
+  line-height: 1;
+  margin: 0;
+}
+
+.oto-main-counter .counter-label {
+  font-size: 18px;
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+}
+
+/* 5. Sektion Ladebalken */
+.oto-section-progress-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.progress-item {
+  width: 100%;
+}
+
+.progress-item .progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+.progress-item .progress-value {
+  font-weight: bold;
+}
+
+.progress-item .progress-bar-background {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-item .progress-bar-fill {
+  background: var(--widget-accent-color); /* <-- NEU: Nutzt die Farb-Variable */
+  height: 100%;
+  width: 0%;
+  border-radius: 5px;
+  transition: width 3.5s ease-out;
+}
+
+/* 6. Untere Sektion: Natur-Banner */
+.oto-section-banner {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.oto-section-banner img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* 7. Natus Logo Sektion (ganz unten) */
+.oto-section-logo {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding-right: 10px;
+}
+
+.oto-section-logo img {
+  height: 30px;
+  width: auto;
+  opacity: 0.7;
+}
+
+
+/* --- 8. Mobile-Version (Responsive Design) --- */
+/* (Ich habe deine beiden @media-Blöcke zu einem zusammengefasst) */
+@media (max-width: 500px) {
+  
+  /* Wrapper */
+  .oto-widget-wrapper {
+    min-height: auto;
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  /* Beschreibung */
+  .oto-section-description p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Counter */
+  .oto-main-counter .counter-number {
+    font-size: 62px;
+  }
+  .oto-main-counter .counter-label {
+    font-size: 16px;
+  }
+
+  /* Bild */
+  .oto-main-image img {
+    width: 140px;
+  }
+  
+  /* Layout */
+  .oto-section-main {
+    margin: 24px 0;
+    gap: 15px;
+  }
+  
+  /* Banner */
+  .oto-section-banner img {
+    height: 160px;
+  }
+
+  /* Logo */
+  .oto-section-logo {
+    text-align: right;
+  }
+  .oto-section-logo img {
+    height: 15px;
+  }
+}
