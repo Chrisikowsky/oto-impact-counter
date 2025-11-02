@@ -102,7 +102,7 @@
     
     // --- Sektion 0: Große Überschrift ---
     var titleSection = createElement('div', 'oto-section oto-section-title');
-    titleSection.innerHTML = '<h1>Otoscan® 💕🌱</h1>';
+    titleSection.innerHTML = '<h1>Otoscan® 🌱</h1>';
     
     // --- Sektion 1: Beschreibung ---
     var descSection = createElement('div', 'oto-section oto-section-description');
