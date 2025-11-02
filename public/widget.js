@@ -147,7 +147,7 @@
 
     // --- NEU: Sektion 3.5: Anmerkung zur Berechnung ---
     var explanationSection = createElement('div', 'oto-section oto-section-explanation');
-    explanationSection.innerHTML = '<p>Berechnungsgrundlage (pro Scan): Einsparung von 8.5g Plastik (25ml PP-Kartusche) und 10g Silikon (8g Effektiv +2g Überschuss). Die CO2e-Ersparnis (0.12kg) beinhaltet die graue Energie der Materialherstellung sowie eine Schätzung für die Logistik.</p>';
+    explanationSection.innerHTML = '<p>Berechnungsgrundlage (pro Scan!): Einsparung von 8.5g Plastik (2x25ml AB-Kartusche) und 10g Silikon (8g Effektiv +2g Überschuss). Die CO2e-Ersparnis (0.12kg) beinhaltet die graue Energie der Materialherstellung sowie eine Schätzung für die Logistik.</p>';
     
     // --- Sektion 4: Banner ---
     var bannerSection = createElement('div', 'oto-section oto-section-banner');

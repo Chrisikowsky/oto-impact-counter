@@ -123,7 +123,7 @@
 /* NEU: Sektion 3.5: Anmerkung zur Berechnung */
 .oto-section-explanation {
   margin-top: 15px; /* Etwas Abstand zu den Balken */
-  text-align: center;
+  text-align: left;
 }
 
 .oto-section-explanation p {
