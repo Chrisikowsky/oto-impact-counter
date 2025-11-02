@@ -55,6 +55,14 @@
   margin: 30px 0;
 }
 
+.oto-section-title h1 {
+  font-size: 40px; /* Desktop-Größe */
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: left;
+  margin-top: 0; /* Stellt sicher, dass kein Standard-h1-Abstand oben ist */
+}
+
 .oto-main-image img {
   width: 200px;
   height: auto;
@@ -165,6 +173,11 @@
 /* (Ich habe deine beiden @media-Blöcke zu einem zusammengefasst) */
 @media (max-width: 500px) {
   
+  /* NEU: Überschrift auf Mobile verkleinern */
+  .oto-section-title h1 {
+    font-size: 36px; /* Kleinere Schrift für Mobile */
+  }
+
   /* Wrapper */
   .oto-widget-wrapper {
     min-height: auto;
