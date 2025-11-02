@@ -140,16 +140,21 @@ export default function HomePage() {
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-6xl">
         
         <h1 className="text-4xl font-bold text-left mb-8 text-gray-800">
-          OtoImpact Counter
+          OtoImpact counter
         </h1>
 
         {/* --- NEUER BESCHREIBUNGSBLOCK START --- */}
           <div className="mb-8 max-w-5xl">
-            <p className="text-lg text-gray-700 mb-4">
+            <p className="text-sm text-gray-700 mb-4">
               Zeigen Sie Ihren Patienten, dass Sie modern und nachhaltig arbeiten. Dieses Widget rechnet die Gesamtzahl Ihrer digitalen Otoscan-Abformungen live in eine sichtbare Umweltersparnis um.
             </p>
-            <p className="text-lg text-gray-700">
+            <p className="text-sm text-gray-700 mb-4">
               Für Ihre Website-Besucher wird so auf einen Blick klar: Ihr Hörakustik Unternehmen ist modern, arbeitet abdruckfrei und hilft aktiv, Plastikmüll zu vermeiden. Das schafft Vertrauen und gibt Ihren Kunden ein gutes Gefühl bei ihrer Entscheidung.
+            </p>
+            <p className="text-sm text-gray-700 mb-4">
+              Gestalten. Verbinden. Beeindrucken.
+              Hier im Live-Editor können Sie Ihr persönliches Nachhaltigkeits-Widget gestalten. Passen Sie Farbe und Hintergrund so an, dass es perfekt zu Ihrer Marke passt.
+              Sobald Sie mit dem Aussehen zufrieden sind, verbinden Sie sich einfach über "Widget aktivieren" sicher mit Ihrem Otocloud-Konto. Das Tool synchronisiert sich sofort mit Ihren echten Scandaten und erstellt Ihren persönlichen HTML-Code – bereit zum Kopieren und Einfügen auf Ihrer Website.
             </p>
           </div>
         {/* --- NEUER BESCHREIBUNGSBLOCK ENDE --- */}
