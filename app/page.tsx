@@ -259,7 +259,7 @@ export default function HomePage() {
 
           {/* --- RECHTE SPALTE: Live-Vorschau --- */}
           <div className="py-4 px-0 md:p-4 border border-gray-200 rounded-lg bg-gray-50 md:col-span-2">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-left">
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center px-4 md:px-0">
               Live-Vorschau
             </h3>
             <div id="oto-impact-counter"></div>
