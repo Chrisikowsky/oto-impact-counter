@@ -98,9 +98,9 @@ export async function GET(request: Request) {
     // --- 4. BERECHNUNGEN (bleibt an dieser Position) ---
     // Wir weisen den oben deklarierten 'let'-Variablen jetzt Werte zu.
     
-    plasticSavedInKg = (scanCount * 15 / 1000).toFixed(1);
-    siliconeSavedInKg = (scanCount * 30 / 1000).toFixed(1);
-    co2SavedInKg = (scanCount * 0.5).toFixed(0);
+    plasticSavedInKg = (scanCount * 8.50 / 1000).toFixed(1);
+    siliconeSavedInKg = (scanCount * 10 / 1000).toFixed(1);
+    co2SavedInKg = (scanCount * 0.12).toFixed(1);
 
 
     console.log(`[Widget API] Sende finale Daten für User ${user.email}: ${scanCount} Scans`);

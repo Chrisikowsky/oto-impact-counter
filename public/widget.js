@@ -144,6 +144,10 @@
     progressSection.appendChild(
       createProgressBar('progress-co2', 'CO2 eingespart', data.co2SavedInKg + ' kg', 90)
     );
+
+    // --- NEU: Sektion 3.5: Anmerkung zur Berechnung ---
+    var explanationSection = createElement('div', 'oto-section oto-section-explanation');
+    explanationSection.innerHTML = '<p>Berechnungsgrundlage (pro Scan): Einsparung von 8.5g Plastik (25ml PP-Kartusche) und 10g Silikon (8g Effektiv +2g Überschuss). Die CO2e-Ersparnis (0.12kg) beinhaltet die graue Energie der Materialherstellung sowie eine Schätzung für die Logistik.</p>';
     
     // --- Sektion 4: Banner ---
     var bannerSection = createElement('div', 'oto-section oto-section-banner');
@@ -160,6 +164,7 @@
     wrapper.appendChild(mainSection);
     //wrapper.appendChild(headline2Section);
     wrapper.appendChild(progressSection);
+    wrapper.appendChild(explanationSection);
     wrapper.appendChild(bannerSection);
     wrapper.appendChild(logoSection);
     

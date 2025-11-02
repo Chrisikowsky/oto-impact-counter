@@ -120,6 +120,19 @@
   transition: width 3.5s ease-out;
 }
 
+/* NEU: Sektion 3.5: Anmerkung zur Berechnung */
+.oto-section-explanation {
+  margin-top: 15px; /* Etwas Abstand zu den Balken */
+  text-align: center;
+}
+
+.oto-section-explanation p {
+  font-size: 10px; /* Sehr kleine Schrift */
+  opacity: 0.7; /* Leicht transparent */
+  line-height: 1.4;
+  margin: 0;
+}
+
 /* 6. Untere Sektion: Natur-Banner */
 .oto-section-banner {
   margin-top: 10px;
