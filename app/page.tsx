@@ -146,7 +146,7 @@ export default function HomePage() {
         {/* --- NEUER BESCHREIBUNGSBLOCK START --- */}
           <div className="mb-8 max-w-5xl">
             <p className="text-sm text-gray-700 mb-4">
-              Zeigen Sie Ihren Patienten, dass Sie modern und nachhaltig arbeiten. Dieses Widget rechnet die Gesamtzahl Ihrer digitalen Otoscan-Abformungen live in eine sichtbare Umweltersparnis um.
+              Zeigen Sie Ihren Kunden, dass Sie modern und nachhaltig arbeiten. Dieses Widget rechnet die Gesamtzahl Ihrer digitalen Otoscan-Abformungen live in eine sichtbare Umweltersparnis um.
             </p>
             <p className="text-sm text-gray-700 mb-4">
               Für Ihre Website-Besucher wird so auf einen Blick klar: Ihr Hörakustik Unternehmen ist modern, arbeitet abdruckfrei und hilft aktiv, Plastikmüll zu vermeiden. Das schafft Vertrauen und gibt Ihren Kunden ein gutes Gefühl bei ihrer Entscheidung.
